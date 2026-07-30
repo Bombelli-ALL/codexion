@@ -1,6 +1,7 @@
 #include "utils.h"
 #include <stdlib.h>
 #include "init.h"
+# include "monitor.h"
 
 /* ---------------------------------------------------------
     Initialize Dongles (Mutexes)
@@ -8,7 +9,13 @@
 void init_dongles(t_system *system)
 {
     t_uint i;
+    t_heap_keyfn schaduler;
 
+
+    if (strcmp(system->config.scheduler, "fifo") == 0)
+        schaduler = fifo_key_extractor;
+    else
+        schaduler = edf_key_extractor;
     system->dongles = malloc(sizeof(t_dongle) * system->config.number_of_coders);
     memset((void *)system->dongles, 0,system->config.number_of_coders * sizeof(t_dongle));
     if (!system->dongles)
@@ -17,12 +24,17 @@ void init_dongles(t_system *system)
     i = 0;
     while (i < system->config.number_of_coders)
     {
-        system->dongles[i].dongle_id = i;
+        system->dongles[i].dongle_id = i + 1;
         system->dongles[i].in_use = false;
         system->dongles[i].available_time = 0;
+        system->dongles[i].cooldown = system->config.dongle_cooldown;
+        heap_init(&system->dongles[i].heap, 2, schaduler);
         
         if (pthread_mutex_init(&system->dongles[i].dongle_mutex, NULL) != 0)
             ft_error("init_dongles", "Failed to initialize dongle mutex", 1);
+        
+        if (pthread_cond_init(&system->dongles[i].heap_cond, NULL) != 0)
+            ft_error("init_dongles", "Failed to initialize dongle condition variable", 1);
         i++;
     }
 }
@@ -71,8 +83,8 @@ void init_system(t_system *system)
     if (pthread_mutex_init(&system->stdout_mutex, NULL) != 0)
         ft_error("init_system", "Failed to initialize stdout mutex", 1);
 
-        system->done = false;
-        init_coders(system);
-        init_dongles(system);
+    system->done = false;
+    init_coders(system);
+    init_dongles(system);
 }
 

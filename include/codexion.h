@@ -6,7 +6,7 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 03:08:49 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/28 17:45:52 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/07/30 02:58:12 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include "dongle.h"
 # include "coder.h"
 # include "parser.h"
-# include "monitor/monitor.h"
+# include "monitor.h"
 # include "../src/init/init.h"
 #endif

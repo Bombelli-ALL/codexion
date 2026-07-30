@@ -1,10 +1,10 @@
 #include "init.h"
 #include "types.h"
 # include "printer.h"
-# include "monitor/monitor.h"
+# include "monitor.h"
 
 void init_thread(t_system *system) {
-    int i;
+    t_uint i;
 
     i = 0;
     if (pthread_create(&system->monitor, NULL, &monitor, (void *)system)){
@@ -25,7 +25,7 @@ void init_thread(t_system *system) {
 
 
 void join_threads(t_system *system) {
-    int i;
+    t_uint i;
     t_bool check = false;
 
     i = 0;

@@ -5,8 +5,10 @@
 void *monitor(void *arg);
 
 
-/* Shedular fonction: getter  fifo edf*/
-t_bool  get_scheduler(t_system *system);
-void    fifo(t_coder *coder, int role);
-void    edf(t_coder *coder);
+/* Schedular fonction:  fifo edf*/
+t_ulong fifo_key_extractor(void *value);
+t_ulong edf_key_extractor(void *value);
+
+/* Schadular manager */
+void    secheduler(t_system *system, int flage);
 # endif

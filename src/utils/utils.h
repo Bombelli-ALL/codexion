@@ -6,7 +6,7 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 23:32:26 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/28 17:45:45 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:28:50 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define UTILS_H
 
 #include "types.h"
-# include "queue.h"
+# include "heap.h"
 
 t_bool  is_space(char c);
 int     ft_isdigit(int c);
