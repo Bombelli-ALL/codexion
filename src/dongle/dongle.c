@@ -28,6 +28,6 @@ void    dongle_unlock(t_dongle *dongle) {
     pthread_mutex_lock(&dongle->dongle_mutex);
     dongle->available_time = get_time_ms() + dongle->cooldown;
     dongle->in_use = false;
-    pthread_cond_signal(&dongle->heap_cond);
+    pthread_cond_broadcast(&dongle->heap_cond);
     pthread_mutex_unlock(&dongle->dongle_mutex);
 }

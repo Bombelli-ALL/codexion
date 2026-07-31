@@ -35,8 +35,8 @@ void    *coder_routine(void *arg) {
 
     while (!system_is_done(coder->system) && !coder->finished){
         if (coder->coder_id % 2 == 0){
-        dongle_lock(coder, coder->left_dongle);
-        dongle_lock(coder, coder->right_dongle);
+            dongle_lock(coder, coder->left_dongle);
+            dongle_lock(coder, coder->right_dongle);
         }
         else
         {
@@ -45,8 +45,8 @@ void    *coder_routine(void *arg) {
         }
         compile_debug_refac(coder, COMPILE);
         if (coder->coder_id % 2 == 0){
-        dongle_unlock(coder->right_dongle);
-        dongle_unlock(coder->left_dongle);
+            dongle_unlock(coder->right_dongle);
+            dongle_unlock(coder->left_dongle);
         }
         else{
             dongle_unlock(coder->left_dongle);

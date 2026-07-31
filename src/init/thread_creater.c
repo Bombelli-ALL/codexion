@@ -14,11 +14,6 @@ void init_thread(t_system *system) {
         i++;
     }
 
-    if (pthread_create(&system->monitor, NULL, &monitor, (void *)system)){
-        system_set_done(system);
-        free_system(system);
-        ft_error("Thread_creation Faild", "Monitor Thread Faild to create", 1);
-    }
     i = 0;
     while (i < system->config.number_of_coders){
         if (pthread_create(&system->coders[i].coder_thread, NULL, &coder_routine, (void *)&system->coders[i]) != 0){
@@ -28,6 +23,11 @@ void init_thread(t_system *system) {
             ft_error("Thread_creation Faild", "thraed has faild", 1);
         }
         i++;   
+    }
+    if (pthread_create(&system->monitor, NULL, &monitor, (void *)system)){
+        system_set_done(system);
+        free_system(system);
+        ft_error("Thread_creation Faild", "Monitor Thread Faild to create", 1);
     }
 }
 
