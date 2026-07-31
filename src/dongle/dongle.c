@@ -18,7 +18,6 @@ void    dongle_lock(t_coder *coder, t_dongle *dongle) {
     pthread_mutex_unlock(&dongle->heap_mutex);
     
     pthread_mutex_lock(&dongle->dongle_mutex);
-    
     while (dongle->in_use || heap_get_head(dongle) != coder)
         pthread_cond_wait(&dongle->heap_cond, &dongle->dongle_mutex);
     ft_printer(coder->system, coder->coder_id, MSG_TAKE_DONGLE);

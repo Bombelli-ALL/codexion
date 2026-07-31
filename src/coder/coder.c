@@ -41,6 +41,10 @@ void    *coder_routine(void *arg) {
         else
         {
             dongle_lock(coder, coder->right_dongle);
+            if (coder->left_dongle == coder->right_dongle){
+                ft_usleep(coder->system->config.time_to_burnout + 20, coder->system);
+                break;
+            }
             dongle_lock(coder, coder->left_dongle);
         }
         compile_debug_refac(coder, COMPILE);

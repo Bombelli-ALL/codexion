@@ -36,6 +36,7 @@ void *monitor(void *arg) {
             system_set_done(system);
             return NULL;
         }
+        usleep(500);
     }
     return NULL;
 }
