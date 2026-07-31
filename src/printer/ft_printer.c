@@ -7,8 +7,8 @@ void    ft_printer(t_system *system, t_uint coder_id, t_string msg)
 {
     long    current_time;
 
-    if (system->done == true)
-        return ;
+    // if (system->done == true)
+    //     return ;
     current_time = get_time_ms() - system->start_time;
 
     pthread_mutex_lock(&system->stdout_mutex); 

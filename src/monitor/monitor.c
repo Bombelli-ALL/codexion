@@ -5,15 +5,19 @@
 # include "init.h"
 
 int check_for_burns_out(t_system *system, t_uint *counter) {
-    t_uint i; 
+    t_uint i;
+    long diffrent_time;
     i = 0;
     while(i < system->config.number_of_coders) {
         if (get_coder_stats(&system->coders[i]))
-        counter++;
-        else if ((get_time_ms() - get_time_to_burn(&system->coders[i])) == 0){
-            system_set_done(system);
-            ft_printer(system, system->coders[i].coder_id, MSG_BURNOUT);
+        (*counter)++;
+        else {
+            diffrent_time = get_time_ms() - get_last_compile(&system->coders[i]);
+            if (diffrent_time >= (long)system->config.time_to_burnout){
+                system_set_done(system);
+                ft_printer(system, system->coders[i].coder_id, MSG_BURNOUT);
             return(1);
+            }
         }
         i++;
     }
@@ -23,9 +27,9 @@ int check_for_burns_out(t_system *system, t_uint *counter) {
 void *monitor(void *arg) {
     t_system *system = (t_system *)arg;
     t_uint    counter;
-    counter = 0;
     
     while (!system_is_done(system)) {
+        counter = 0;
         if (check_for_burns_out(system, &counter))
             return NULL;
         if (counter == system->config.number_of_coders){

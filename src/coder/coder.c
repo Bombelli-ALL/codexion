@@ -17,25 +17,41 @@ int get_coder_stats(t_coder *coder) {
     return (stats);
 }
 
-t_ulong get_time_to_burn(t_coder *coder) {
-    t_ulong time_last;
+t_ulong get_last_compile(t_coder *coder) {
+    t_ulong last_compile;
 
     pthread_mutex_lock(&coder->coder_mutex);
-    time_last = coder->time_last_to_burn_out;
+    last_compile = coder->last_compile;
     pthread_mutex_unlock(&coder->coder_mutex);
-    return (time_last); 
+    return (last_compile); 
 }
 
 void    *coder_routine(void *arg) {
     t_coder *coder;
     coder = (t_coder *)arg;
 
+    if (coder->coder_id % 2 == 0)
+        ft_usleep(1, coder->system);
+
     while (!system_is_done(coder->system) && !coder->finished){
+        if (coder->coder_id % 2 == 0){
         dongle_lock(coder, coder->left_dongle);
         dongle_lock(coder, coder->right_dongle);
+        }
+        else
+        {
+            dongle_lock(coder, coder->right_dongle);
+            dongle_lock(coder, coder->left_dongle);
+        }
         compile_debug_refac(coder, COMPILE);
+        if (coder->coder_id % 2 == 0){
         dongle_unlock(coder->right_dongle);
         dongle_unlock(coder->left_dongle);
+        }
+        else{
+            dongle_unlock(coder->left_dongle);
+            dongle_unlock(coder->right_dongle);
+        }
         compile_debug_refac(coder, DEBUG);
         compile_debug_refac(coder, REFAC);
     }

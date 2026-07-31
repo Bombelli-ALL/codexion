@@ -29,7 +29,7 @@ void    *coder_routine(void *arg);
 
 /* Getters of time_to_burn_out and coder stats done or not */
 int         get_coder_stats(t_coder *coder);
-t_ulong     get_time_to_burn(t_coder *coder);
+t_ulong     get_last_compile(t_coder *coder);
 void        set_coder_done(t_coder *coder);
 
 #endif

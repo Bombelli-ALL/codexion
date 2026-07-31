@@ -84,7 +84,7 @@ void init_system(t_system *system)
         ft_error("init_system", "Failed to initialize stdout mutex", 1);
 
     system->done = false;
-    init_coders(system);
     init_dongles(system);
+    init_coders(system);
 }
 

@@ -6,11 +6,12 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 02:20:52 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/30 03:05:08 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:31:14 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
+# include "utils.h"
 #include <stdlib.h>
 
 void free_system(t_system *system)
@@ -20,8 +21,11 @@ void free_system(t_system *system)
     if (system->dongles)
     {
         i = 0;
-        while (i < system->config.number_of_coders)
-            pthread_mutex_destroy(&system->dongles[i++].dongle_mutex);
+        while (i < system->config.number_of_coders){
+            pthread_mutex_destroy(&system->dongles[i].dongle_mutex);
+            heap_destroy(&system->dongles[i].heap);
+            i++;
+        }
         free(system->dongles);
     }
     if (system->coders)

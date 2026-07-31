@@ -41,12 +41,12 @@ all: $(NAME)
 
 # Link the executable
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) -g $(CFLAGS) $(OBJS) -o $(NAME)
 
 # Compile .c files into .o files safely, creating subdirectories dynamically
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) -g $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # Clean object files
 clean:
