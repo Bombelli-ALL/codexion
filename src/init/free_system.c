@@ -6,7 +6,7 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 02:20:52 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/31 17:14:51 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/07/31 17:37:06 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void free_system(t_system *system)
         while (i < system->config.number_of_coders){
             pthread_cond_destroy(&system->dongles[i].heap_cond);
             pthread_mutex_destroy(&system->dongles[i].dongle_mutex);
+            pthread_mutex_destroy(&system->dongles[i].heap_mutex);
             heap_destroy(&system->dongles[i].heap);
             i++;
         }

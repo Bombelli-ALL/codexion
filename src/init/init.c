@@ -32,6 +32,8 @@ void init_dongles(t_system *system)
         
         if (pthread_mutex_init(&system->dongles[i].dongle_mutex, NULL) != 0)
             ft_error("init_dongles", "Failed to initialize dongle mutex", 1);
+        if (pthread_mutex_init(&system->dongles[i].heap_mutex, NULL) != 0)
+            ft_error("init_dongles", "Failed to initialize heap mutex", 1);
         
         if (pthread_cond_init(&system->dongles[i].heap_cond, NULL) != 0)
             ft_error("init_dongles", "Failed to initialize dongle condition variable", 1);

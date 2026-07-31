@@ -4,7 +4,6 @@
 # include "utils.h"
 
 #include "coder.h"
-#include "heap.h"
 
 /* ---------------------------------------------------------
     FIFO schaduler: Sorts by first in 

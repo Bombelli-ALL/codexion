@@ -9,6 +9,7 @@ typedef struct s_dongle {
     t_ulong     available_time;
     t_ulong     cooldown;
     t_mutex     dongle_mutex;
+    t_mutex     heap_mutex;
     t_heap      heap;
     t_cond      heap_cond;
     t_bool      in_use;
