@@ -14,17 +14,13 @@
 # define PARSER_H
 
 # include "../../include/types.h"
-#include <string.h>
-#include <stdio.h>
+# include <stdio.h>
+# include <string.h>
 
-
-
-
-void     assign_scheduler(t_config *config, t_string arg);
-void            parser_input(t_config *config, int argc, char **av);
-t_string ft_skip_spaces(t_string str);
-t_string valid_input(t_string str);
-t_ulong         ft_number(t_string element);
-
+void		assign_scheduler(t_config *config, t_string arg);
+void		parser_input(t_config *config, int argc, char **av);
+t_string	ft_skip_spaces(t_string str);
+t_string	valid_input(t_string str);
+t_ulong		ft_number(t_string element);
 
 #endif

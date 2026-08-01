@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "types.h"
+#include "types.h"
 
-t_bool is_space(char c){
-    return ( (c >= 9 && c<= 13) || 32 == c);
+t_bool	is_space(char c)
+{
+	return ((c >= 9 && c <= 13) || 32 == c);
 }

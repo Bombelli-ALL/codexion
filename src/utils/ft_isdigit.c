@@ -6,11 +6,11 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 22:07:54 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/25 23:37:06 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/08/01 03:04:49 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-int	ft_isdigit(int c){
+int	ft_isdigit(int c)
+{
 	return (c >= '0' && c <= '9');
 }

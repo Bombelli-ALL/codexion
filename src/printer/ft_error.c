@@ -11,14 +11,13 @@
 /* ************************************************************************** */
 
 #include "printer.h"
-#include <stdio.h>
 #include "types.h"
+#include <stdio.h>
 #include <stdlib.h>
 
-void    ft_error(t_string context, t_string msg, int flag)
+void	ft_error(t_string context, t_string msg, int flag)
 {
-    fprintf(stderr, "[ERROR] %s: %s\n", context, msg);
-    if (flag)
-        exit(EXIT_FAILURE);
+	fprintf(stderr, "[ERROR] %s: %s\n", context, msg);
+	if (flag)
+		exit(EXIT_FAILURE);
 }
-

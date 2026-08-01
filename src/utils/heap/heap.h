@@ -15,7 +15,7 @@
 
 # include "types.h"
 
-typedef t_ulong (*t_heap_keyfn)(void *value);
+typedef t_ulong		(*t_heap_keyfn)(void *value);
 
 typedef struct s_heap
 {
@@ -23,13 +23,14 @@ typedef struct s_heap
 	t_uint			size;
 	t_uint			capacity;
 	t_heap_keyfn	key_of;
-}	t_heap;
+}					t_heap;
 
-t_bool	heap_init(t_heap *heap, t_uint capacity, t_heap_keyfn key_of);
-t_bool	heap_push(t_heap *heap, void *value);
-void	*heap_pop(t_heap *heap);
-void	*heap_peek(t_heap *heap);
-t_bool	heap_is_empty(t_heap *heap);
-void	heap_destroy(t_heap *heap);
+t_bool				heap_init(t_heap *heap, t_uint capacity,
+						t_heap_keyfn key_of);
+t_bool				heap_push(t_heap *heap, void *value);
+void				*heap_pop(t_heap *heap);
+void				*heap_peek(t_heap *heap);
+t_bool				heap_is_empty(t_heap *heap);
+void				heap_destroy(t_heap *heap);
 
 #endif

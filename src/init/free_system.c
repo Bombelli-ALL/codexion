@@ -6,37 +6,38 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 02:20:52 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/31 17:37:06 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/08/01 03:42:49 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
-# include "utils.h"
+#include "utils.h"
 #include <stdlib.h>
 
-void free_system(t_system *system)
+void	free_system(t_system *system)
 {
-    t_uint i;
+	t_uint	i;
 
-    if (system->dongles)
-    {
-        i = 0;
-        while (i < system->config.number_of_coders){
-            pthread_cond_destroy(&system->dongles[i].heap_cond);
-            pthread_mutex_destroy(&system->dongles[i].dongle_mutex);
-            pthread_mutex_destroy(&system->dongles[i].heap_mutex);
-            heap_destroy(&system->dongles[i].heap);
-            i++;
-        }
-        free(system->dongles);
-    }
-    if (system->coders)
-    {
-        i = 0;
-        while (i < system->config.number_of_coders)
-            pthread_mutex_destroy(&system->coders[i++].coder_mutex);
-        free(system->coders);
-    }
-    pthread_mutex_destroy(&system->system_mutex);
-    pthread_mutex_destroy(&system->stdout_mutex);
+	if (system->dongles)
+	{
+		i = 0;
+		while (i < system->config.number_of_coders)
+		{
+			pthread_cond_destroy(&system->dongles[i].heap_cond);
+			pthread_mutex_destroy(&system->dongles[i].dongle_mutex);
+			pthread_mutex_destroy(&system->dongles[i].heap_mutex);
+			heap_destroy(&system->dongles[i].heap);
+			i++;
+		}
+		free(system->dongles);
+	}
+	if (system->coders)
+	{
+		i = 0;
+		while (i < system->config.number_of_coders)
+			pthread_mutex_destroy(&system->coders[i++].coder_mutex);
+		free(system->coders);
+	}
+	pthread_mutex_destroy(&system->system_mutex);
+	pthread_mutex_destroy(&system->stdout_mutex);
 }

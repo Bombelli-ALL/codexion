@@ -13,13 +13,13 @@
 #ifndef UTILS_H
 # define UTILS_H
 
-#include "types.h"
 # include "heap.h"
+# include "types.h"
 
-t_bool  is_space(char c);
-int     ft_isdigit(int c);
-size_t  ft_strlen(t_string s);
-long    get_time_ms(void);
-void    ft_usleep(long ms, t_system *system);
+t_bool	is_space(char c);
+int		ft_isdigit(int c);
+size_t	ft_strlen(t_string s);
+long	get_time_ms(void);
+void	ft_usleep(long ms, t_system *system);
 
 #endif

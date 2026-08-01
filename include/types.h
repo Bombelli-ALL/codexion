@@ -6,7 +6,7 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 03:08:37 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/29 23:56:56 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/08/01 03:53:29 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_config {
     t_ulong     time_to_compile;
     t_ulong     time_to_debug;
     t_ulong     time_to_refactor;
-    t_uint      number_of_compiles_required;
+    t_uint      num_of_req_compile;
     t_ulong     dongle_cooldown;
     t_string    scheduler;
 }   t_config;
