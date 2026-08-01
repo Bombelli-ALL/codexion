@@ -1,7 +1,6 @@
 NAME        = codexion
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -pthread
-
 # Include paths for all your module directories
 INCLUDES    = -Iinclude \
               -Isrc/parser \
