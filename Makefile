@@ -22,7 +22,7 @@ SRCS        = main.c \
               src/utils/ft_usleep.c \
               src/utils/is_space.c \
               src/utils/heap/heap.c \
-              src/utils/heap/heap_pop_push.c \
+              src/utils/heap/heap_utils.c \
               src/monitor/monitor.c \
               src/monitor/scheduler_utils.c \
               src/init/init.c \

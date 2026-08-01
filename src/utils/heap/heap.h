@@ -6,7 +6,7 @@
 /*   By: alerradi <alerradi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 00:00:00 by alerradi          #+#    #+#             */
-/*   Updated: 2026/07/29 23:48:29 by alerradi         ###   ########.fr       */
+/*   Updated: 2026/08/01 14:42:46 by alerradi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void				*heap_pop(t_heap *heap);
 void				*heap_peek(t_heap *heap);
 t_bool				heap_is_empty(t_heap *heap);
 void				heap_destroy(t_heap *heap);
-
+void				swap_ptrs(void **a, void **b);
 #endif
