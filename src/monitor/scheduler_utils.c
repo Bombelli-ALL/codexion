@@ -33,7 +33,7 @@ t_ulong edf_key_extractor(void *value)
     /* Deadline is the absolute time they will burn out */
     pthread_mutex_lock(&coder->coder_mutex);
     deadline = coder->last_compile + coder->time_last_to_burn_out;
-    pthread_mutex_lock(&coder->coder_mutex);
+    pthread_mutex_unlock(&coder->coder_mutex);
     /* Lower deadline = burns out sooner = higher priority in Min-Heap */
     return (deadline);
 }
