@@ -1,7 +1,7 @@
 NAME        = codexion
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -pthread
-# Include paths for all your module directories
+
 INCLUDES    = -Iinclude \
               -Isrc/parser \
               -Isrc/printer \
@@ -12,7 +12,7 @@ INCLUDES    = -Iinclude \
               -Isrc/coder \
               -Isrc/init
 
-# All source files in the project
+
 SRCS        = main.c \
               src/parser/parser.c \
               src/printer/ft_error.c \
@@ -33,31 +33,29 @@ SRCS        = main.c \
               src/coder/coder.c \
               src/coder/coder_get_set.c
 
-# Object files configuration
+
 OBJ_DIR     = obj
 OBJS        = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-# Default target
+
 all: $(NAME)
 
-# Link the executable
+
 $(NAME): $(OBJS)
 	$(CC) -g $(CFLAGS) $(OBJS) -o $(NAME)
 
-# Compile .c files into .o files safely, creating subdirectories dynamically
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	$(CC) -g $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# Clean object files
+
 clean:
 	rm -rf $(OBJ_DIR)
 
-# Clean objects and executable
+
 fclean: clean
 	rm -f $(NAME)
 
-# Rebuild everything
 re: fclean all
 
 .PHONY: all clean fclean re
