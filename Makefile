@@ -31,7 +31,8 @@ SRCS        = main.c \
               src/init/get_set_system.c \
               src/init/thread_creater.c \
               src/dongle/dongle.c \
-              src/coder/coder.c
+              src/coder/coder.c \
+              src/coder/coder_get_set.c
 
 # Object files configuration
 OBJ_DIR     = obj
